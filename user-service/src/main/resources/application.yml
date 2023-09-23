@@ -1,0 +1,80 @@
+server:
+  port: 8001
+
+##
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+  instance:
+    instance-id: ${spring.application.name}:${random.uuid}
+
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  application:
+    name: user-service
+
+
+  ## DATABASE
+  datasource:
+    url: jdbc:postgresql://localhost:5432/redditDB
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        use_sql_comments: true
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+  # Redis config
+  redis:
+    host: localhost
+    port: 6379
+
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: gauravmahor49@gmail.com
+    password: mmfzfhkjqxqbzttb
+    protocol: smtp
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+
+# Mail Configurations
+mailServerHost: smtp.gmail.com
+mailServerPort: 587
+mailServerProtocol: smtp
+mailServerUsername: gauravmahor49@gmail.com
+mailServerPassword: mmfzfhkjqxqbzttb
+mailServerAuthActive: true
+mailServerTlsActive: true
+mailDebugActive: false
+mailTemplatesPath: templates
+mailFromMailAddress: gauravmahor49@gmail.com
+
+# JWT Token
+jwtSecret: 8246D376CB35D92C592D5AC8792C136EEA0519E52D9B248758CD05DAFFD7B81E
+
+# Backend server details
+backendServerDetail: http://localhost:8090
+
+# JWT
+#jwtKeyPath: conf/jwt_rsa_pri.pem
+jwtKeyPath: KDmCIthmqx5LQmqrP4F4ynMUDkV6PxKKvUvTA2fyjAs=
+# 1 month
+accessTokenExpiryTime: 2629800000
